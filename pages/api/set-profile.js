@@ -17,5 +17,5 @@ export default async (req, res) => {
     token: process.env.SLACK_TOKEN,
   });
   await db.set('frame', frame)
-  res.redirect('https://dj-pfp-hc.vercel.app');
+  res.redirect('https://dj-pfp-hc.vercel.app/api/set-profile');
 };
