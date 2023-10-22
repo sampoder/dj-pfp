@@ -12,8 +12,12 @@ export default async (req, res) => {
   const image = await axios.get(photo, {
     responseType: "arraybuffer",
   });
+  const squareImageBuffer = await sharp(Buffer.from(imageResponse.data))
+    .resize(400, 400) // Adjust the dimensions as needed
+    .toBuffer();
+  
   const slackRequest = await client.users.setPhoto({
-    image: image.data,
+    image: squareImageBuffer,
     token: process.env.SLACK_TOKEN,
   });
   await db.set('frame', frame)
