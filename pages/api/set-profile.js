@@ -13,7 +13,7 @@ export default async (req, res) => {
   const image = await axios.get(photo, {
     responseType: "arraybuffer",
   });
-  const squareImageBuffer = await sharp(Buffer.from(imageResponse.data))
+  const squareImageBuffer = await sharp(Buffer.from(image.data))
     .resize(400, 400) // Adjust the dimensions as needed
     .toBuffer();
   
