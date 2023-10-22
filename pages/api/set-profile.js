@@ -8,7 +8,7 @@ export default async (req, res) => {
   let frame = await db.get('frame')
   frame += 1
   if(frame > 15) frame = 0
-  let photo = `https://dj-pfp-hc.vercel.app/images/frame_${frame.toString().padStart(2, '0')}_delay-0.06s.jpg`
+  let photo = req.query.photo || `https://dj-pfp-hc.vercel.app/images/frame_${frame.toString().padStart(2, '0')}_delay-0.06s.jpg`
   const image = await axios.get(photo, {
     responseType: "arraybuffer",
   });
